@@ -37,4 +37,17 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/**
+ * struct data_store - app data in one place
+ * @file: the monty file
+ * @line: the line
+ * Description: carries values through the program
+ */
+typedef struct data_store_s
+{
+	FILE *file;
+	char *line;
+} data_store_t;
+extern data_store_t data;
+
 #endif
