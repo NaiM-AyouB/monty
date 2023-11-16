@@ -1,6 +1,8 @@
 #include "monty.h"
 
-data_store_t data = {NULL, NULL};
+/**
+ * data_store_t data = {NULL, NULL};
+ */
 
 /**
  * main - monty code interpreter
@@ -24,7 +26,6 @@ int main(int argc, char *argv[])
 	}
 
 	file = fopen(argv[1], "r");
-	data.file = file;
 	if (!file)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
@@ -32,15 +33,13 @@ int main(int argc, char *argv[])
 	}
 
 	stack = NULL;
-	(void)*stack;
 	while (read_line_return > 0)
 	{
 		line = NULL;
 		read_line_return = getline(&line, &size, file);
-		data.line = line;
 		if (read_line_return > 0)
 		{
-			printf("line: %s", line);
+			execute(line, &stack);
 		}
 		free(line);
 	}

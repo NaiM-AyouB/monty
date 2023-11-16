@@ -50,4 +50,6 @@ typedef struct data_store_s
 } data_store_t;
 extern data_store_t data;
 
+void execute(char *line, stack_t **stack);
+
 #endif
