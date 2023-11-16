@@ -6,6 +6,10 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <sys/types.h>
+#include <fcntl.h>
+#include <string.h>
+#include <ctype.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -50,6 +54,6 @@ typedef struct data_store_s
 } data_store_t;
 extern data_store_t data;
 
-void execute(char *line, stack_t **stack);
+void execute(char *line, stack_t **stack, unsigned int line_number);
 
 #endif

@@ -17,8 +17,8 @@ int main(int argc, char *argv[])
 	ssize_t read_line_return = 1;
 	size_t size = 0;
 	stack_t *stack;
+	unsigned int line_number;
 
-	(void)*argv;
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
@@ -33,13 +33,15 @@ int main(int argc, char *argv[])
 	}
 
 	stack = NULL;
+	line_number = 0;
 	while (read_line_return > 0)
 	{
 		line = NULL;
 		read_line_return = getline(&line, &size, file);
+		line_number++;
 		if (read_line_return > 0)
 		{
-			execute(line, &stack);
+			execute(line, &stack, line_number);
 		}
 		free(line);
 	}
