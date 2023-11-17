@@ -11,12 +11,15 @@ void execute(char *line, stack_t *stack, unsigned int line_number)
 {
 	char *op;
 	char *arg;
+	int number;
 
 	op = strtok(line, " \n\t");
 	arg = strtok(NULL, " \n\t");
 	if (strcmp(op, "push") == 0)
 	{
-		printf("line: %s %s\n", line, arg);
+		number = atoi(arg);
+		if (add_node(&stack, number) == NULL)
+			fprintf(stderr, "err at add_node\n");
 	}
 	else if (strcmp(op, "pall") == 0)
 	{

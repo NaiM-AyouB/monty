@@ -7,14 +7,14 @@
  *
  * Return: number of nodes
  */
-size_t print_stack(const stack_t *h)
+size_t print_stack(const stack_t *stack)
 {
 	size_t i;
 
-	for (i = 0; h != NULL; i++)
+	for (i = 0; stack != NULL; i++)
 	{
-		printf("%d\n", h->n);
-		h = h->next;
+		printf("%d\n", stack->n);
+		stack = stack->next;
 	}
 	return (i);
 }
