@@ -4,6 +4,7 @@
  * execute - function that executes the opcode
  * @line: line
  * @stack: stack
+ * @line_number: line number
  * Return: nothing
  */
 void execute(char *line, stack_t **stack, unsigned int line_number)
@@ -21,8 +22,7 @@ void execute(char *line, stack_t **stack, unsigned int line_number)
 	}
 	else if (strcmp(op, "pall") == 0)
 	{
-		printf("PALL\n");
-		printf("arg: %s\n", arg);
+		print_stack(stack);
 	}
 	else
 	{
