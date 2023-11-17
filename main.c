@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
 		line_number++;
 		if (read_line_return > 0)
 		{
-			execute(line, &stack, line_number);
+			execute(line, stack, line_number);
 		}
 		free(line);
 	}

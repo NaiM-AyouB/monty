@@ -54,7 +54,7 @@ typedef struct data_store_s
 } data_store_t;
 extern data_store_t data;
 
-void execute(char *line, stack_t **stack, unsigned int line_number);
+void execute(char *line, stack_t *stack, unsigned int line_number);
 size_t print_stack(const stack_t *h);
 size_t stack_len(const stack_t *h);
 stack_t *add_dnodeint(stack_t **head, const int n);

@@ -7,18 +7,16 @@
  * @line_number: line number
  * Return: nothing
  */
-void execute(char *line, stack_t **stack, unsigned int line_number)
+void execute(char *line, stack_t *stack, unsigned int line_number)
 {
 	char *op;
 	char *arg;
 
 	op = strtok(line, " \n\t");
 	arg = strtok(NULL, " \n\t");
-	(void)*stack;
 	if (strcmp(op, "push") == 0)
 	{
-		printf("PUSH\n");
-		printf("arg: %s\n", arg);
+		printf("line: %s %s\n", line, arg);
 	}
 	else if (strcmp(op, "pall") == 0)
 	{
