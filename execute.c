@@ -14,23 +14,26 @@ void execute(char *line, stack_t **stack, unsigned int line_number)
 	int number;
 
 	op = strtok(line, " \n\t");
-	arg = strtok(NULL, " \n\t");
-	if (strcmp(op, "push") == 0)
+	if (op != NULL)
 	{
-		if (arg == NULL)
-			fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		arg = strtok(NULL, " \n\t");
+		if (strcmp(op, "push") == 0)
+		{
+			if (arg == NULL)
+				fprintf(stderr, "L%d: usage: push integer\n", line_number);
+			else
+			{
+				number = atoi(arg);
+				if (add_node(stack, number) == NULL)
+					fprintf(stderr, "err at add_node\n");
+			}
+		}
+		else if (strcmp(op, "pall") == 0)
+			print_stack(*stack);
 		else
 		{
-			number = atoi(arg);
-			if (add_node(stack, number) == NULL)
-				fprintf(stderr, "err at add_node\n");
+			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, op);
+			exit(EXIT_FAILURE);
 		}
-	}
-	else if (strcmp(op, "pall") == 0)
-		print_stack(*stack);
-	else
-	{
-		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, op);
-		exit(EXIT_FAILURE);
 	}
 }
