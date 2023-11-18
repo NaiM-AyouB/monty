@@ -12,11 +12,11 @@
  */
 int main(int argc, char *argv[])
 {
+	stack_t *stack;
 	FILE *file;
 	char *line;
 	ssize_t read_line_return = 1;
 	size_t size = 0;
-	stack_t *stack;
 	unsigned int line_number;
 
 	if (argc != 2)
@@ -40,9 +40,7 @@ int main(int argc, char *argv[])
 		read_line_return = getline(&line, &size, file);
 		line_number++;
 		if (read_line_return > 0)
-		{
-			execute(line, stack, line_number);
-		}
+			execute(line, &stack, line_number);
 		free(line);
 	}
 	return (0);

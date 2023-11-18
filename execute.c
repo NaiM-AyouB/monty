@@ -7,7 +7,7 @@
  * @line_number: line number
  * Return: nothing
  */
-void execute(char *line, stack_t *stack, unsigned int line_number)
+void execute(char *line, stack_t **stack, unsigned int line_number)
 {
 	char *op;
 	char *arg;
@@ -18,13 +18,11 @@ void execute(char *line, stack_t *stack, unsigned int line_number)
 	if (strcmp(op, "push") == 0)
 	{
 		number = atoi(arg);
-		if (add_node(&stack, number) == NULL)
+		if (add_node(stack, number) == NULL)
 			fprintf(stderr, "err at add_node\n");
 	}
 	else if (strcmp(op, "pall") == 0)
-	{
-		print_stack(stack);
-	}
+		print_stack(*stack);
 	else
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, op);

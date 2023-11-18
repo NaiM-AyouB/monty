@@ -11,14 +11,14 @@ stack_t *add_node(stack_t **head, const int n)
 {
 	stack_t *new;
 
-	if (head == NULL)
-		return (NULL);
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 		return (NULL);
+
 	new->n = n;
 	new->prev = NULL;
 	new->next = *head;
+
 	*head = new;
 	if (new->next != NULL)
 		(new->next)->prev = new;
