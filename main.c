@@ -1,10 +1,6 @@
 #include "monty.h"
 
 /**
- * data_store_t data = {NULL, NULL};
- */
-
-/**
  * main - monty code interpreter
  * @argc: number of arguments
  * @argv: monty file location

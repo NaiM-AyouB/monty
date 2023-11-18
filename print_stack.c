@@ -3,7 +3,7 @@
 
 /**
  * print_stack - print all the elements of a stack
- * @h: pointer to the start of the stack
+ * @stack: pointer to the start of the stack
  *
  * Return: number of nodes
  */
