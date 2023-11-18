@@ -30,6 +30,13 @@ void execute(char *line, stack_t **stack, unsigned int line_number)
 		}
 		else if (strcmp(op, "pall") == 0)
 			print_stack(*stack);
+		else if (strcmp(op, "pint") == 0)
+		{
+			if (stack == NULL || *stack == NULL)
+				printf("L%d: can't pint, stack empty\n", line_number);
+			else
+				printf("%d\n", (*stack)->n);
+		}
 		else
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, op);
