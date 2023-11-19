@@ -11,33 +11,29 @@ void execute(char *line, stack_t **stack, unsigned int line_number)
 {
 	char *op;
 	char *arg;
-	int number;
+	int i;
+	instruction_t opst[] = {
+		{"push", push},
+		{"pall", pall},
+		{"pint", pint},
+		{NULL, NULL}};
 
+	i = 0;
 	op = strtok(line, " \n\t");
-	if (op != NULL)
+	arg = strtok(NULL, " \n\t");
+
+	if (op && op[0] != '#')
 	{
-		arg = strtok(NULL, " \n\t");
-		if (strcmp(op, "push") == 0)
+		while (opst[i].opcode)
 		{
-			if (arg == NULL)
-				fprintf(stderr, "L%d: usage: push integer\n", line_number);
-			else
+			if (strcmp(op, opst[i].opcode) == 0)
 			{
-				number = atoi(arg);
-				if (add_node(stack, number) == NULL)
-					fprintf(stderr, "err at add_node\n");
+				opst[i].f(stack, arg, line_number);
+				break;
 			}
+			i++;
 		}
-		else if (strcmp(op, "pall") == 0)
-			print_stack(*stack);
-		else if (strcmp(op, "pint") == 0)
-		{
-			if (stack == NULL || *stack == NULL)
-				printf("L%d: can't pint, stack empty\n", line_number);
-			else
-				printf("%d\n", (*stack)->n);
-		}
-		else
+		if (opst[i].opcode == NULL)
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, op);
 			exit(EXIT_FAILURE);
