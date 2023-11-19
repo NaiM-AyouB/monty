@@ -67,5 +67,5 @@ int delete_dnodeint_at_index(stack_t **head, unsigned int index);
 void push(stack_t **stack, char *arg, unsigned int line_number);
 void pall(stack_t **stack, char *arg, unsigned int line_number);
 void pint(stack_t **stack, char *arg, unsigned int line_number);
-
+void pop(stack_t **stack, char *arg, unsigned int line_number);
 #endif

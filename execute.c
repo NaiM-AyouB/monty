@@ -16,6 +16,7 @@ void execute(char *line, stack_t **stack, unsigned int line_number)
 		{"push", push},
 		{"pall", pall},
 		{"pint", pint},
+		{"pop", pop},
 		{NULL, NULL}};
 
 	i = 0;
@@ -24,7 +25,7 @@ void execute(char *line, stack_t **stack, unsigned int line_number)
 
 	if (op && op[0] != '#')
 	{
-		while (opst[i].opcode)
+		while (opst[i].opcode != NULL)
 		{
 			if (strcmp(op, opst[i].opcode) == 0)
 			{
