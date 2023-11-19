@@ -32,9 +32,9 @@ void push(stack_t **stack, char *arg, unsigned int line_number)
  */
 void pall(stack_t **stack, char *arg, unsigned int line_number)
 {
-	print_stack(*stack);
 	(void)*arg;
 	(void)line_number;
+	print_stack(*stack);
 }
 
 /**
@@ -47,11 +47,11 @@ void pall(stack_t **stack, char *arg, unsigned int line_number)
  */
 void pint(stack_t **stack, char *arg, unsigned int line_number)
 {
+	(void)*arg;
 	if (stack == NULL || *stack == NULL)
 		printf("L%d: can't pint, stack empty\n", line_number);
 	else
 		printf("%d\n", (*stack)->n);
-	(void)*arg;
 }
 
 /**
@@ -64,6 +64,7 @@ void pint(stack_t **stack, char *arg, unsigned int line_number)
  */
 void pop(stack_t **stack, char *arg, unsigned int line_number)
 {
+	(void)*arg;
 	if (stack == NULL || *stack == NULL)
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
@@ -75,5 +76,35 @@ void pop(stack_t **stack, char *arg, unsigned int line_number)
 		free((*stack)->prev);
 		(*stack)->prev = NULL;
 	}
+}
+
+/**
+ * swap - function that swaps the top two elements of the stack
+ * @stack: double stack pointer to the stack
+ * @arg: arg
+ * @line_number: line number
+ *
+ * Return: nothing
+ */
+void swap(stack_t **stack, char *arg, unsigned int line_number)
+{
+	stack_t *one;
+	stack_t *two;
+
 	(void)*arg;
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+	{
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	one = *stack;
+	two = one->next;
+
+	one->prev = two;
+	one->next = two->next;
+
+	two->prev = NULL;
+	two->next = one;
+
+	*stack = two;
 }
