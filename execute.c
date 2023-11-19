@@ -15,12 +15,13 @@ void execute(char *line, stack_t **stack, unsigned int line_number)
 	instruction_t opst[] = {
 		{"push", push},
 		{"pall", pall},
+		{"pallp", pallp},
 		{"pint", pint},
 		{"pop", pop},
 		{"swap", swap},
 		{"add", add},
 		{"nop", nop},
-		{"pallp", pallp},
+		{"sub", sub},
 		{NULL, NULL}};
 
 	i = 0;
