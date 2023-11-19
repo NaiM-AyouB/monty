@@ -38,6 +38,21 @@ void pall(stack_t **stack, char *arg, unsigned int line_number)
 }
 
 /**
+ * pallp - function that prints everything in the stack but pretty
+ * @stack: double stack pointer to the stack
+ * @arg: arg
+ * @line_number: line number
+ *
+ * Return: nothing
+ */
+void pallp(stack_t **stack, char *arg, unsigned int line_number)
+{
+	(void)*arg;
+	(void)line_number;
+	print_stack_pretty(*stack);
+}
+
+/**
  * pint - function that prints the top of the stack
  * @stack: double stack pointer to the stack
  * @arg: arg
@@ -76,35 +91,4 @@ void pop(stack_t **stack, char *arg, unsigned int line_number)
 		free((*stack)->prev);
 		(*stack)->prev = NULL;
 	}
-}
-
-/**
- * swap - function that swaps the top two elements of the stack
- * @stack: double stack pointer to the stack
- * @arg: arg
- * @line_number: line number
- *
- * Return: nothing
- */
-void swap(stack_t **stack, char *arg, unsigned int line_number)
-{
-	stack_t *one;
-	stack_t *two;
-
-	(void)*arg;
-	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-	{
-		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
-		exit(EXIT_FAILURE);
-	}
-	one = *stack;
-	two = one->next;
-
-	one->prev = two;
-	one->next = two->next;
-
-	two->prev = NULL;
-	two->next = one;
-
-	*stack = two;
 }

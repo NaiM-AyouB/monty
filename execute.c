@@ -19,6 +19,8 @@ void execute(char *line, stack_t **stack, unsigned int line_number)
 		{"pop", pop},
 		{"swap", swap},
 		{"add", add},
+		{"nop", nop},
+		{"pallp", pallp},
 		{NULL, NULL}};
 
 	i = 0;

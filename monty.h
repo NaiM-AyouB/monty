@@ -56,6 +56,7 @@ extern data_store_t data;
 
 void execute(char *line, stack_t **stack, unsigned int line_number);
 size_t print_stack(const stack_t *stack);
+size_t print_stack_pretty(const stack_t *stack);
 size_t stack_len(const stack_t *h);
 stack_t *add_node(stack_t **head, const int n);
 stack_t *add_node_end(stack_t **head, const int n);
@@ -66,9 +67,11 @@ stack_t *insert_dnodeint_at_index(stack_t **h, unsigned int idx, int n);
 int delete_dnodeint_at_index(stack_t **head, unsigned int index);
 void push(stack_t **stack, char *arg, unsigned int line_number);
 void pall(stack_t **stack, char *arg, unsigned int line_number);
+void pallp(stack_t **stack, char *arg, unsigned int line_number);
 void pint(stack_t **stack, char *arg, unsigned int line_number);
 void pop(stack_t **stack, char *arg, unsigned int line_number);
 void swap(stack_t **stack, char *arg, unsigned int line_number);
 void add(stack_t **stack, char *arg, unsigned int line_number);
+void nop(stack_t **stack, char *arg, unsigned int line_number);
 
 #endif

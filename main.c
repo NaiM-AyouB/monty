@@ -29,6 +29,7 @@ int main(int argc, char *argv[])
 	}
 
 	stack = NULL;
+	push(&stack, "0", 0);
 	line_number = 0;
 	while (read_line_return > 0)
 	{
