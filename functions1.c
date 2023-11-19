@@ -13,7 +13,11 @@ void push(stack_t **stack, char *arg, unsigned int line_number)
 	int number;
 
 	if (arg == NULL)
+	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		free_stack(*stack);
+		exit(EXIT_FAILURE);
+	}
 	else
 	{
 		number = atoi(arg);
@@ -64,7 +68,11 @@ void pint(stack_t **stack, char *arg, unsigned int line_number)
 {
 	(void)*arg;
 	if (stack == NULL || *stack == NULL)
+	{
 		printf("L%d: can't pint, stack empty\n", line_number);
+		free_stack(*stack);
+		exit(EXIT_FAILURE);
+	}
 	else
 		printf("%d\n", (*stack)->n);
 }
@@ -83,6 +91,7 @@ void pop(stack_t **stack, char *arg, unsigned int line_number)
 	if (stack == NULL || *stack == NULL)
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 	*stack = (*stack)->next;

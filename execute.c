@@ -7,7 +7,7 @@
  * @line_number: line number
  * Return: nothing
  */
-void execute(char *line, stack_t **stack, unsigned int line_number)
+void execute(char *line, stack_t **stack, unsigned int line_number, FILE *file)
 {
 	char *op;
 	char *arg;
@@ -42,6 +42,9 @@ void execute(char *line, stack_t **stack, unsigned int line_number)
 		if (opst[i].opcode == NULL)
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, op);
+			fclose(file);
+			free(line);
+			free_stack(*stack);
 			exit(EXIT_FAILURE);
 		}
 	}

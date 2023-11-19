@@ -36,8 +36,10 @@ int main(int argc, char *argv[])
 		read_line_return = getline(&line, &size, file);
 		line_number++;
 		if (read_line_return > 0)
-			execute(line, &stack, line_number);
+			execute(line, &stack, line_number, file);
 		free(line);
 	}
+	free_stack(stack);
+	fclose(file);
 	return (0);
 }
